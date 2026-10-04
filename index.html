@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#8bc0f7">
+  <title>扫码收款｜懒大王 云商城</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{--navy:#173b8f;--blue:#4d88ee;--deep:#2f5fc4;--soft:#9ecbff;--pink:#ff9fc9;--ink:#21407f}
+    html{min-height:100%;background:#86b9f3}
+    body{min-height:100vh;color:var(--ink);font-family:"Arial Rounded MT Bold","PingFang SC","Microsoft YaHei",sans-serif}
+    button{font:inherit}
+    .page{position:relative;isolation:isolate;min-height:100vh;display:grid;place-items:center;overflow:hidden;padding:72px 16px 38px;background:radial-gradient(circle at 16% 14%,#ffffffd1 0 3px,transparent 4px),radial-gradient(circle at 84% 26%,#ffffffb3 0 4px,transparent 5px),linear-gradient(160deg,#bfe2ff,#76acf0 48%,#477bd4)}
+    .page:after{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(circle at 10% 82%,#1b418f2e,transparent 24%),radial-gradient(circle at 93% 12%,#1c367b3b,transparent 26%)}
+    .grid{position:fixed;inset:0;z-index:-1;opacity:.28;background-image:linear-gradient(#163d8961 1px,transparent 1px),linear-gradient(90deg,#163d8961 1px,transparent 1px);background-size:34px 34px;mask-image:linear-gradient(#000,transparent 76%)}
+    .cloud{position:fixed;z-index:-1;width:124px;height:48px;border:4px solid #234ca49e;border-radius:999px;background:#ffffffbd;box-shadow:inset 0 -8px #90bef857,0 8px #1e45971f}
+    .cloud:before,.cloud:after{content:"";position:absolute;bottom:20px;border:4px solid #234ca49e;border-bottom:0;background:#ffffffe6}
+    .cloud:before{left:20px;width:44px;height:36px;border-radius:50% 50% 0 0}.cloud:after{right:17px;width:53px;height:44px;border-radius:50% 50% 0 0}
+    .c1{top:12%;left:-30px;transform:rotate(-8deg) scale(.9)}.c2{right:-26px;bottom:14%;transform:rotate(7deg) scale(.8)}
+    .symbol{position:fixed;z-index:-1;color:#fff;font-size:42px;font-weight:900;line-height:1;text-shadow:-2px -2px var(--deep),2px -2px var(--deep),-2px 2px var(--deep),2px 2px var(--deep),0 7px #183b872e}.s1{top:8%;right:12%;transform:rotate(12deg)}.s2{bottom:8%;left:11%;color:#bfe5ff}.heart{top:32%;left:7%;color:var(--pink);transform:rotate(-12deg)}
+    .card{position:relative;width:min(100%,410px);padding:82px 28px 28px;border:4px solid var(--navy);border-radius:46px;outline:5px solid #fffffff2;background:radial-gradient(circle at 20% 14%,#97c7ff70 0 3px,transparent 4px),linear-gradient(150deg,#fffffffA,#e2f2fff7);box-shadow:0 15px #1b3f8fe0,0 28px 42px #102f7552,inset 0 0 0 3px #97c6ffb3,inset 0 7px #fff;text-align:center;animation:pop .58s cubic-bezier(.18,.9,.28,1.2) both}
+    .card:before{content:"";position:absolute;inset:12px;border:2px dashed #4577d14d;border-radius:34px;pointer-events:none}
+    .sticker{position:absolute;z-index:3;width:38px;height:38px;display:grid;place-items:center;border:3px solid var(--navy);border-radius:50%;background:#fff;color:var(--pink);font-size:23px;box-shadow:0 4px #1f479a2e}.sl{top:30px;left:28px;transform:rotate(-12deg)}.sr{top:45px;right:26px;color:var(--blue);transform:rotate(10deg)}
+    .mascot{position:absolute;top:-62px;left:50%;z-index:4;width:138px;height:138px;transform:translateX(-50%)}
+    .halo{position:absolute;inset:-8px;border:3px dashed #9dcaff;border-radius:50%;background:#ffffffa3;box-shadow:0 10px 22px #224fac33;animation:spin 18s linear infinite}
+    .mascot img{position:relative;width:100%;height:100%;display:block;border:5px solid #fff;border-radius:50%;outline:4px solid var(--navy);object-fit:cover;box-shadow:inset 0 0 0 3px var(--soft),0 8px #244b9e38}
+    .ribbon{position:absolute;right:-9px;bottom:5px;width:42px;height:24px;transform:rotate(-18deg)}.ribbon:before,.ribbon:after{content:"";position:absolute;width:21px;height:22px;border:3px solid var(--navy);background:var(--soft)}.ribbon:before{left:0;border-radius:70% 25% 70% 35%;transform:rotate(18deg)}.ribbon:after{right:0;border-radius:25% 70% 35% 70%;transform:rotate(-18deg)}.ribbon i{position:absolute;left:16px;top:6px;z-index:2;width:13px;height:13px;border:3px solid var(--navy);border-radius:50%;background:#fff}
+    header,.tabs,.qr-shell,.brand,.hint{position:relative;z-index:2}.eyebrow{display:flex;align-items:center;justify-content:center;gap:7px;color:#5d8edd;font-size:11px;font-weight:900;letter-spacing:.18em}.eyebrow b{color:#8fc7ff;font-size:16px}.title{margin-top:2px;color:#2454ae;font-size:30px;font-weight:900;letter-spacing:.07em;text-shadow:-2px -2px #fff,2px -2px #fff,-2px 2px #fff,2px 2px #fff,0 4px #4c84e240}.subtitle{margin-top:6px;color:#5976ac;font-size:13px;font-weight:700}
+    .tabs{display:flex;gap:9px;margin:22px 0 20px;padding:6px;border:3px solid var(--navy);border-radius:22px;background:#bedfff;box-shadow:inset 0 4px #ffffffb8,0 6px #2d5bb72e}.tab{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:11px 4px;border:2px solid transparent;border-radius:15px;background:#ffffff94;color:#3e64a8;cursor:pointer;font-size:14px;font-weight:800;transition:.18s}.tab:hover{transform:translateY(-1px);background:#ffffffd6}.tab:focus-visible{outline:3px solid var(--pink);outline-offset:3px}.tab.active{transform:translateY(-2px);border-color:#fff;background:linear-gradient(#6ba8ff,#3974db);color:#fff;box-shadow:0 5px #204eaa,inset 0 3px #ffffff7a;text-shadow:0 2px #18439859}.dot{width:10px;height:10px;border:2px solid #fff;border-radius:50%;box-shadow:0 0 0 1px #143d8d33}.wx{background:#19c869}.ali{background:#1b83ff}
+    .qr-shell{width:278px;height:278px;display:grid;place-items:center;margin:0 auto 20px;border:4px solid var(--navy);border-radius:42px;background:radial-gradient(circle at 12px 12px,#fff 0 3px,transparent 4px) 0 0/24px 24px,linear-gradient(145deg,#d7edff,#9bcaff);box-shadow:0 9px #214ba13d,inset 0 0 0 5px #fff,inset 0 0 0 8px #5993e86b}.qr{width:232px;height:232px;padding:10px;border:3px solid #5c91df;border-radius:25px;background:#fff;box-shadow:0 6px #2c57b12e,inset 0 0 0 2px #e2f1ff}.qr img{width:100%;height:100%;display:block;border-radius:13px;object-fit:contain;animation:swap .23s ease both}
+    .bubble{position:absolute;z-index:3;border:3px solid var(--navy);border-radius:50%;background:#fff;box-shadow:inset 0 -4px #b9ddff}.b1{left:-9px;top:48px;width:27px;height:27px}.b2{right:-8px;bottom:44px;width:22px;height:22px}.bow{position:absolute;top:-15px;right:25px;z-index:4;width:48px;height:30px}.bow:before,.bow:after{content:"";position:absolute;top:4px;width:24px;height:24px;border:3px solid var(--navy);background:var(--pink)}.bow:before{left:0;border-radius:65% 25% 65% 35%;transform:rotate(18deg)}.bow:after{right:0;border-radius:25% 65% 35% 65%;transform:rotate(-18deg)}.bow i{position:absolute;left:17px;top:9px;z-index:2;width:15px;height:15px;border:3px solid var(--navy);border-radius:50%;background:#fff}
+    .brand{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:7px 16px;border:3px solid var(--navy);border-radius:14px;background:linear-gradient(#fff7dc,#ffdc9f);box-shadow:0 5px #2f519630,inset 0 3px #ffffffb8;color:#2855a7;font-size:14px;font-weight:900;letter-spacing:.08em}.brand .cloud-icon{color:#74b4f8;font-size:19px}.brand .spark{color:var(--pink)}.hint{margin-top:12px;color:#7891bd;font-size:11px;font-weight:700;letter-spacing:.05em}
+    @keyframes pop{from{opacity:0;transform:translateY(18px) scale(.96)}to{opacity:1;transform:none}}@keyframes spin{to{transform:rotate(360deg)}}@keyframes swap{from{opacity:.1;transform:scale(.96) rotate(-1deg)}to{opacity:1;transform:none}}
+    @media(max-width:430px){.page{padding:72px 14px 34px}.card{width:min(100%,380px);padding:80px 20px 25px;border-radius:40px}.qr-shell{width:min(278px,78vw);height:min(278px,78vw)}.qr{width:calc(min(278px,78vw) - 46px);height:calc(min(278px,78vw) - 46px)}.symbol{opacity:.72}}
+    @media(prefers-reduced-motion:reduce){.card,.halo,.qr img{animation:none}.tab{transition:none}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="grid" aria-hidden="true"></div><div class="cloud c1" aria-hidden="true"></div><div class="cloud c2" aria-hidden="true"></div>
+    <span class="symbol s1" aria-hidden="true">✦</span><span class="symbol s2" aria-hidden="true">✧</span><span class="symbol heart" aria-hidden="true">♡</span>
+    <section class="card" aria-labelledby="title">
+      <div class="sticker sl" aria-hidden="true">☆</div><div class="sticker sr" aria-hidden="true">♡</div>
+      <div class="mascot"><div class="halo" aria-hidden="true"></div><img src="cinnamoroll-style.png" alt="蓝白玉桂狗风格装饰"><span class="ribbon" aria-hidden="true"><i></i></span></div>
+      <header><p class="eyebrow"><b>☁</b> WELCOME <b>☁</b></p><h1 class="title" id="title">扫码收款</h1><p class="subtitle">微信 / 支付宝均可转账</p></header>
+      <div class="tabs" role="tablist" aria-label="选择支付方式">
+        <button class="tab active" id="wx" type="button" role="tab" aria-selected="true"><span class="dot wx"></span>微信支付</button>
+        <button class="tab" id="ali" type="button" role="tab" aria-selected="false"><span class="dot ali"></span>支付宝</button>
+      </div>
+      <div class="qr-shell" role="tabpanel" aria-live="polite"><span class="bubble b1"></span><span class="bubble b2"></span><span class="bow"><i></i></span><div class="qr"><img id="qr" src="wechat.jpg" alt="微信收款二维码"></div></div>
+      <div class="brand"><span class="cloud-icon">☁</span><span>懒大王 云商城</span><span class="spark">✦</span></div>
+      <p class="hint">长按识别二维码 · 谢谢支持</p>
+    </section>
+  </main>
+  <script>
+    const wx=document.getElementById('wx'),ali=document.getElementById('ali'),qr=document.getElementById('qr');
+    function choose(type){const isWx=type==='wx';wx.classList.toggle('active',isWx);ali.classList.toggle('active',!isWx);wx.setAttribute('aria-selected',isWx);ali.setAttribute('aria-selected',!isWx);qr.src=isWx?'wechat.jpg':'alipay.jpg';qr.alt=isWx?'微信收款二维码':'支付宝收款二维码';qr.style.animation='none';requestAnimationFrame(()=>{qr.style.animation='swap .23s ease both'})}
+    wx.addEventListener('click',()=>choose('wx'));ali.addEventListener('click',()=>choose('ali'));
+  </script>
+</body>
+</html>
